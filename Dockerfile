@@ -10,6 +10,13 @@ RUN apt-get install -y \
         pkg-config gengetopt libtool automake make \
         meson ninja-build
 
+# Required libraries
+RUN apt-get install -y \
+        libmicrohttpd-dev libjansson-dev \
+        libssl-dev  libsofia-sip-ua-dev libglib2.0-dev \
+        libopus-dev libogg-dev libcurl4-openssl-dev liblua5.3-dev \
+        libconfig-de
+
 # gstreamer
 RUN apt-get install -y \
         libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
@@ -34,12 +41,6 @@ RUN cd ~ && \
         make shared_library && make install
 
 # janus
-RUN apt-get install -y \
-        libmicrohttpd-dev libjansson-dev \
-        libssl-dev  libsofia-sip-ua-dev libglib2.0-dev \
-        libopus-dev libogg-dev libcurl4-openssl-dev liblua5.3-dev \
-        libconfig-dev
-
 RUN cd ~ && \
         git clone https://github.com/meetecho/janus-gateway.git
 
